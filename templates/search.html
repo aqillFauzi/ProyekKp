@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cari Data Pekerja</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <img src="https://www.bpjsketenagakerjaan.go.id/images/logo-bpjs.png" alt="Logo BPJS" class="logo">
+        <nav>
+            <a href="/">Home</a>
+            <a href="/search">Cari Data</a>
+            <a href="/upload">Upload File Baru</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h2>Cari Data Pekerja</h2>
+        <p>Data yang dicari berasal dari file Excel yang terakhir Anda upload.</p>
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" class="search-form">
+            <input type="text" name="npp_id" placeholder="Masukkan NPP" required>
+            <button type="submit">Cari</button>
+        </form>
+
+        {% if result %}
+        <div class="result-container">
+            <h3>Hasil Pencarian untuk: {{ result['NAMA PERUSAHAAN'] }}</h3>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="number">{{ result['TK AKTIF'] }}</span>
+                    <span class="label">Tenaga Kerja Aktif</span>
+                </div>
+                <div class="stat-item">
+                    <span class="number">{{ result['TK SUDAH JMO'] }}</span>
+                    <span class="label">Terdaftar JMO</span>
+                </div>
+                <div class="stat-item">
+                    <span class="number">{{ result['TK BELUM JMO'] }}</span>
+                    <span class="label">Belum JMO</span>
+                </div>
+            </div>
+        </div>
+        {% elif request.method == 'POST' %}
+        <div class="result-container">
+            <p class="not-found">Data untuk NPP yang Anda masukkan tidak ditemukan.</p>
+        </div>
+        {% endif %}
+    </main>
+</body>
+</html>
