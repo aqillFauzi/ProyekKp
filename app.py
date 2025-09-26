@@ -1,15 +1,43 @@
+# Import library yang dibutuhkan
 import pandas as pd
 from flask import Flask, render_template, request, session, redirect, url_for, flash
+import sqlite3
 
+# Inisialisasi Flask app
 app = Flask(__name__)
-# SECRET_KEY wajib ada untuk menggunakan session
 app.config['SECRET_KEY'] = 'kunci-rahasia-anda-yang-aman'
 
+# Nama database SQLite
+DB_NAME = "database.db"
+
+# Helper: buat tabel SQLite jika belum ada
+def init_db():
+    conn = sqlite3.connect(DB_NAME)
+    cursor = conn.cursor()
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS pekerja (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            kode_kantor TEXT,
+            npp TEXT UNIQUE,
+            divisi TEXT,
+            nama_perusahaan TEXT,
+            tk_aktif INTEGER,
+            tk_sudah_jmo INTEGER,
+            tk_belum_jmo INTEGER
+        )
+    """)
+    conn.commit()
+    conn.close()
+
+init_db()  # jalankan sekali saat start
+
+# Route dan logic aplikasi
 @app.route('/')
 def home():
-    """Menampilkan halaman utama (index.html)."""
+    """Halaman utama"""
     return render_template('index.html')
 
+# Route untuk upload file Excel
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
@@ -21,21 +49,38 @@ def upload_file():
         
         if file and file.filename.endswith('.xlsx'):
             try:
-                # PERBAIKAN 1: Baca sheet pertama (index 0), apapun namanya.
+                # Baca file Excel sheet pertama
                 df = pd.read_excel(file, sheet_name=0, engine='openpyxl')
-                
-                # PERBAIKAN 2: Membersihkan semua nama kolom secara otomatis.
-                # Mengubah jadi HURUF BESAR dan menghapus spasi di awal/akhir.
                 df.columns = [col.upper().strip() for col in df.columns]
-                
-                # Cek apakah kolom wajib 'NPP' ada setelah dibersihkan
+
+                # Pastikan kolom NPP ada
                 if 'NPP' not in df.columns:
                     flash("Error: File Excel tidak memiliki kolom 'NPP'.", 'danger')
                     return redirect(request.url)
 
-                session['excel_data'] = df.to_json(orient='split')
-                
-                flash(f"File '{file.filename}' berhasil diunggah! Silakan cari data.", 'success')
+                # Simpan data ke SQLite
+                conn = sqlite3.connect(DB_NAME)
+                cursor = conn.cursor()
+
+                for _, row in df.iterrows():
+                    cursor.execute("""
+                        INSERT OR REPLACE INTO pekerja 
+                        (kode_kantor, npp, divisi, nama_perusahaan, tk_aktif, tk_sudah_jmo, tk_belum_jmo)
+                        VALUES (?, ?, ?, ?, ?, ?, ?)
+                    """, (
+                        str(row.get("KODE KANTOR", "")),
+                        str(row.get("NPP", "")),
+                        str(row.get("DIVISI", "")),
+                        str(row.get("NAMA PERUSAHAAN", "")),
+                        int(row.get("TK AKTIF", 0)),
+                        int(row.get("TK SUDAH JMO", 0)),
+                        int(row.get("TK BELUM JMO", 0))
+                    ))
+
+                conn.commit()
+                conn.close()
+
+                flash(f"File '{file.filename}' berhasil diunggah dan data tersimpan di database!", 'success')
                 return redirect(url_for('search'))
 
             except Exception as e:
@@ -47,34 +92,31 @@ def upload_file():
     
     return render_template('upload.html')
 
+# Route untuk pencarian berdasarkan NPP
 @app.route('/search', methods=['GET', 'POST'])
 def search():
-    if 'excel_data' not in session:
-        flash('Silakan upload file Excel terlebih dahulu.', 'info')
-        return redirect(url_for('upload_file'))
-        
-    df = pd.read_json(session['excel_data'], orient='split')
-    
-    # Pastikan kolom 'NPP' ada dan bertipe string
-    if 'NPP' in df.columns:
-        df['NPP'] = df['NPP'].astype(str)
-    else:
-        # Jika kolom NPP tidak ada (seharusnya tidak terjadi karena sudah dicek saat upload)
-        flash("Data yang diunggah tidak valid. Harap unggah ulang file.", "danger")
-        return redirect(url_for('upload_file'))
-
     search_result = None
     if request.method == 'POST':
         npp_id = request.form.get('npp_id')
-        
-        # PERBAIKAN 3: Pencarian dibuat tidak case-sensitive.
-        # Membandingkan keduanya dalam format huruf besar.
-        result_row = df[df['NPP'].str.upper() == npp_id.upper()]
-        
-        if not result_row.empty:
-            search_result = result_row.iloc[0].to_dict()
+        conn = sqlite3.connect(DB_NAME)
+        cursor = conn.cursor()
+        cursor.execute("""
+            SELECT nama_perusahaan, tk_aktif, tk_sudah_jmo, tk_belum_jmo
+            FROM pekerja WHERE UPPER(npp) = ?
+        """, (npp_id.upper(),))
+        row = cursor.fetchone()
+        conn.close()
+
+        if row:
+            search_result = {
+                "NAMA PERUSAHAAN": row[0],
+                "TK AKTIF": row[1],
+                "TK SUDAH JMO": row[2],
+                "TK BELUM JMO": row[3]
+            }
 
     return render_template('search.html', result=search_result)
 
+# Jalankan aplikasi
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
