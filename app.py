@@ -5,7 +5,7 @@ app = Flask(__name__)
 # SECRET_KEY wajib ada untuk menggunakan session
 app.config['SECRET_KEY'] = 'kunci-rahasia-anda-yang-aman'
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def home():
     """Menampilkan halaman utama (index.html)."""
     return render_template('index.html')
@@ -45,7 +45,7 @@ def upload_file():
             flash("Format file tidak valid. Harap unggah file .xlsx", "danger")
             return redirect(request.url)
     
-    return render_template('upload.html')
+    return render_template('index.html')
 
 @app.route('/search', methods=['GET', 'POST'])
 def search():
@@ -74,7 +74,7 @@ def search():
         if not result_row.empty:
             search_result = result_row.iloc[0].to_dict()
 
-    return render_template('search.html', result=search_result)
+    return render_template('index.html', result=search_result)
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
