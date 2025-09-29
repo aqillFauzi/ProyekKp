@@ -105,8 +105,8 @@ License: https://freebootstrap.net/license
             <ul class="navbar-nav nav me-auto ps-lg-5 mb-2 mb-lg-0">
               <li class="nav-item"><a class="nav-link scroll-link active" aria-current="page" href="#home">Home</a></li>
               <li class="nav-item"><a class="nav-link scroll-link" href="#about">About</a></li>
-              <li class="nav-item"><a class="nav-link scroll-link" href="#pricing">Search</a></li>
-              <li class="nav-item"><a class="nav-link scroll-link" href="#how-it-works">Upload</a></li>
+              <li class="nav-item"><a class="nav-link scroll-link" href="#search">Search</a></li>
+              <li class="nav-item"><a class="nav-link scroll-link" href="#upload">Upload</a></li>
               <!-- <li class="nav-item"><a class="nav-link scroll-link" href="#services">Services</a></li>
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Dropdown <i class="bi bi-chevron-down"></i></a>
                    -->
@@ -185,7 +185,7 @@ License: https://freebootstrap.net/license
                   <p class="hero-description mb-4 mb-lg-5" data-aos="fade-up" data-aos-delay="200">Dapatkan informasi
                     tenaga kerja aktif, peserta JMO, hingga yang belum terdaftar.</p>
                   <div class="cta d-flex gap-2 mb-4 mb-lg-5" data-aos="fade-up" data-aos-delay="300"><a class="btn"
-                      href="#pricing">Cek Data Sekarang</a><a class="btn btn-white-outline" href="#about">Pelajari Lebih
+                      href="#search">Cek Data Sekarang</a><a class="btn btn-white-outline" href="#about">Pelajari Lebih
                       Lanjut
                       <svg class="lucide lucide-arrow-up-right" xmlns="http://www.w3.org/2000/svg" width="18"
                         height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -329,8 +329,8 @@ License: https://freebootstrap.net/license
         </section> -->
       <!-- End Features-->
 
-      <!-- ======= Pricing =======-->
-      <section class="section pricing__v2" id="pricing">
+      <!-- ======= Search =======-->
+      <section class="section pricing__v2" id="search">
         <div class="container">
           <div class="row mb-5">
             <div class="col-md-5 mx-auto text-center"><span class="subtitle text-uppercase mb-3" data-aos="fade-up"
@@ -342,12 +342,11 @@ License: https://freebootstrap.net/license
             </div>
           </div>
 
-          <div class="row">
-            <div class="col-md-8 mb-4" data-aos="fade-up" data-aos-delay="400">
-              <div class="pt-3 px-5 pb-5 rounded-4 price-table h-100 text-center">
+          <div class="row mt-2"> <!-- ubah mt-* sesuai kebutuhan -->
+            <div class="col-md-8 mb-3" data-aos="fade-up" data-aos-delay="400">
+              <div class="pt-3 px-5 pb-4 rounded-4 price-table h-100 text-center">
 
-                <h3>Cari Data Pekerja Berdasarkan Nomor NPP</h3>
-
+                <h3 class="mb-3">Cari Data Pekerja Berdasarkan Nomor NPP</h3>
                 <!-- Flash messages -->
                 {% with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}
@@ -373,22 +372,23 @@ License: https://freebootstrap.net/license
               <div class="row">
                 {% if result %}
                 <div class="col-12 text-center">
-                  <h3 class="mb-4">Hasil Pencarian untuk: {{ result['NAMA PERUSAHAAN'] }}</h3>
+                  <h3 class="mb-3 fs-5">Hasil Pencarian untuk: {{ result['NAMA PERUSAHAAN'] }}</h3>
                   <div class="row text-center">
                     <div class="col-md-4 stat-item">
-                      <span class="number d-block display-5 fw-bold">{{ result['TK AKTIF'] }}</span>
-                      <span class="label">Tenaga Kerja Aktif</span>
+                      <span class="number d-block fs-4 fw-bold">{{ result['TK AKTIF'] }}</span>
+                      <span class="label d-block small">Tenaga Kerja Aktif</span>
                     </div>
                     <div class="col-md-4 stat-item">
-                      <span class="number d-block display-5 fw-bold">{{ result['TK SUDAH JMO'] }}</span>
-                      <span class="label">Terdaftar JMO</span>
+                      <span class="number d-block fs-4 fw-bold">{{ result['TK SUDAH JMO'] }}</span>
+                      <span class="label d-block small">Terdaftar JMO</span>
                     </div>
                     <div class="col-md-4 stat-item">
-                      <span class="number d-block display-5 fw-bold">{{ result['TK BELUM JMO'] }}</span>
-                      <span class="label">Belum JMO</span>
+                      <span class="number d-block fs-4 fw-bold">{{ result['TK BELUM JMO'] }}</span>
+                      <span class="label d-block small">Belum JMO</span>
                     </div>
                   </div>
                 </div>
+
                 {% elif request.method == 'POST' %}
                 <div class="col-12 text-center">
                   <p class="not-found fs-5 mb-0">Data NPP Yang Anda Cari Tidak Ditemukan.</p>
@@ -402,21 +402,24 @@ License: https://freebootstrap.net/license
   </section>
   <!-- End Pricing-->
 
-  <!-- ======= How it works =======-->
-  <section class="section howitworks__v1" id="how-it-works">
+  <!-- ======= Upload =======-->
+  <section class="section howitworks__v1" id="upload">
     <div class="container">
-      <div class="row mb-5">
-        <div class="col-md-6 mb-2 text-center mx-auto"><span class="subtitle text-uppercase mb-3" data-aos="fade-up"
-            data-aos-delay="0">Upload</span>
-          <h2 data-aos="fade-up" data-aos-delay="100">Upload File Excel</h2>
-          <p data-aos="fade-up" data-aos-delay="200">Pilih file Excel (.xlsx) untuk dianalisis. Data akan tersedia untuk
-            dicari setelah diunggah.</p>
+      <div class="row mb-4"> <!-- ubah dari mb-5 jadi mb-4 -->
+        <div class="col-md-6 mb-1 text-center mx-auto">
+          <span class="subtitle text-uppercase mb-2" data-aos="fade-up" data-aos-delay="0">Upload</span>
+          <h2 data-aos="fade-up" data-aos-delay="100" class="mb-2">Upload File Excel</h2>
+          <p data-aos="fade-up" data-aos-delay="200" class="mb-3">
+            Pilih file Excel (.xlsx) untuk dianalisis. Data akan tersedia untuk dicari setelah diunggah.
+          </p>
         </div>
       </div>
+
       <div class="row g-md-5">
         <div class="col-12">
           <div
-            class="upload-card text-center h-100 d-flex flex-column justify-content-start position-relative p-5 rounded-4">
+            class="upload-card text-center h-100 d-flex flex-column justify-content-start position-relative p-4 rounded-4">
+            <!-- dikurangi dari p-5 ke p-4 -->
 
             {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
@@ -426,17 +429,19 @@ License: https://freebootstrap.net/license
             {% endif %}
             {% endwith %}
 
-            <form method="post" enctype="multipart/form-data" class="mt-3">
-              <div class="mb-3">
+            <form method="post" enctype="multipart/form-data" class="mt-2">
+              <!-- dari mt-3 jadi mt-2 biar lebih rapat -->
+              <div class="mb-2">
+                <!-- dari mb-3 jadi mb-2 -->
                 <input type="file" name="excel_file" accept=".xlsx" required class="form-control">
               </div>
-              <button type="submit" class="btn btn-primary px-4 py-2">Upload & Gunakan File Ini</button>
+              <button type="submit" class="btn btn-primary px-4 py-2">Upload File Ini</button>
             </form>
           </div>
         </div>
       </div>
-
     </div>
+
   </section>
   <!-- End How it works-->
 
@@ -733,7 +738,7 @@ License: https://freebootstrap.net/license
   <!-- ======= Contact =======-->
   <section class="section contact__v2" id="contact">
     <div class="container">
-      <div class="row mb-5">
+      <div class="row mb-5 mt-5">
         <div class="col-md-6 col-lg-7 mx-auto text-center"><span class="subtitle text-uppercase mb-3" data-aos="fade-up"
             data-aos-delay="0">Contact</span>
           <h2 class="h2 fw-bold mb-3" data-aos="fade-up" data-aos-delay="0">Contact Us</h2>
