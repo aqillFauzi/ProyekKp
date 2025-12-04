@@ -2,7 +2,7 @@
 @section('content')
             <!-- ======= Contact =======-->
             <section class="section contact__v2" id="contact">
-                <div class="container">
+                <div class="container mt-custom">
                     <div class="row mb-5">
                         <div class="col-md-6 col-lg-7 mx-auto text-center"><span class="subtitle text-uppercase mb-3"
                                 data-aos="fade-up" data-aos-delay="0">Contact</span>

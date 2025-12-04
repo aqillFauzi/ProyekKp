@@ -1,129 +1,133 @@
 @extends('layout')
 @section('content')
-        <!-- ======= Main =======-->
-        <main>
-            <!-- ======= Hero =======-->
-            <section class="hero__v6 section" id="home">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6 mb-4 mb-lg-0">
-                            <div class="row">
-                                <div class="col-lg-11"><span class="hero-subtitle text-uppercase" data-aos="fade-up"
-                                        data-aos-delay="0">Innovative Fintech Solutions</span>
-                                    <h1 class="hero-title mb-3" data-aos="fade-up" data-aos-delay="100">Secure,
-                                        Efficient, and User-Friendly Financial Services</h1>
-                                    <p class="hero-description mb-4 mb-lg-5" data-aos="fade-up" data-aos-delay="200">
-                                        Experience the future of finance with our secure, efficient, and user-friendly
-                                        financial services.</p>
-                                    <div class="cta d-flex gap-2 mb-4 mb-lg-5" data-aos="fade-up" data-aos-delay="300">
-                                        <a class="btn" href="#">Get Started Now</a><a class="btn btn-white-outline"
-                                            href="#">Learn More
-                                            <svg class="lucide lucide-arrow-up-right" xmlns="http://www.w3.org/2000/svg"
-                                                width="18" height="18" viewbox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path d="M7 7h10v10"></path>
-                                                <path d="M7 17 17 7"></path>
-                                            </svg></a></div>
-                                    <div class="logos mb-4" data-aos="fade-up" data-aos-delay="400"><span
-                                            class="logos-title text-uppercase mb-4 d-block">Trusted by major companies
-                                            worldwide</span>
-                                        <div class="logos-images d-flex gap-4 align-items-center"><img
-                                                class="img-fluid js-img-to-inline-svg"
-                                                src="assets/images/logo/actual-size/logo-air-bnb__black.svg"
-                                                alt="Company 1" style="width: 110px;"><img
-                                                class="img-fluid js-img-to-inline-svg"
-                                                src="{{asset('assets/images/logo/actual-size/logo-ibm__black.svg') }}" alt="Company 2"
-                                                style="width: 80px;"><img class="img-fluid js-img-to-inline-svg"
-                                                src="{{asset('assets/images/logo/actual-size/logo-google__black.svg') }}"
-                                                alt="Company 3" style="width: 110px;"></div>
-                                    </div>
+    <!-- ======= Main =======-->
+    <main>
+        <!-- ======= Hero =======-->
+        <section class="hero__v6 section" id="home">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 mb-4 mb-lg-0">
+                        <div class="row">
+                            <div class="col-lg-11"><span class="hero-subtitle text-uppercase" data-aos="fade-up"
+                                    data-aos-delay="0">Innovative Fintech Solutions</span>
+                                <h1 class="hero-title mb-3" data-aos="fade-up" data-aos-delay="100">Secure,
+                                    Efficient, and User-Friendly Financial Services</h1>
+                                <p class="hero-description mb-4 mb-lg-5" data-aos="fade-up" data-aos-delay="200">
+                                    Experience the future of finance with our secure, efficient, and user-friendly
+                                    financial services.</p>
+                                <div class="cta d-flex gap-2 mb-4 mb-lg-5" data-aos="fade-up" data-aos-delay="300">
+                                    <a class="btn" href="#">Get Started Now</a><a class="btn btn-white-outline"
+                                        href="#">Learn More
+                                        <svg class="lucide lucide-arrow-up-right" xmlns="http://www.w3.org/2000/svg"
+                                            width="18" height="18" viewbox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <path d="M7 7h10v10"></path>
+                                            <path d="M7 17 17 7"></path>
+                                        </svg></a>
+                                </div>
+                                <div class="logos mb-4" data-aos="fade-up" data-aos-delay="400"><span
+                                        class="logos-title text-uppercase mb-4 d-block">Trusted by major companies
+                                        worldwide</span>
+                                    <div class="logos-images d-flex gap-4 align-items-center"><img
+                                            class="img-fluid js-img-to-inline-svg"
+                                            src="assets/images/logo/actual-size/logo-air-bnb__black.svg" alt="Company 1"
+                                            style="width: 110px;"><img class="img-fluid js-img-to-inline-svg"
+                                            src="{{ asset('assets/images/logo/actual-size/logo-ibm__black.svg') }}"
+                                            alt="Company 2" style="width: 80px;"><img class="img-fluid js-img-to-inline-svg"
+                                            src="{{ asset('assets/images/logo/actual-size/logo-google__black.svg') }}"
+                                            alt="Company 3" style="width: 110px;"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="hero-img"><img class="img-card img-fluid" src="{{asset('assets/images/card-expenses.png') }}"
-                                    alt="Image card" data-aos="fade-down" data-aos-delay="600"><img
-                                    class="img-main img-fluid rounded-4" src="{{asset('assets/images/hero-img-1-min.jp') }}g"
-                                    alt="Hero Image" data-aos="fade-in" data-aos-delay="500"></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="hero-img">
+                            {{-- <img class="img-card img-fluid" src="{{ asset('assets/images/card-expenses.png') }}"
+                                alt="Image card" data-aos="fade-down" data-aos-delay="600"> --}}
+                            <img class="img-main img-fluid rounded-4" src="{{ asset('assets/images/latar-bpjs.jpg') }}"
+                                alt="Hero Image" data-aos="fade-in" data-aos-delay="500">
                         </div>
                     </div>
                 </div>
-                <!-- End Hero-->
-            </section>
+            </div>
             <!-- End Hero-->
+        </section>
+        <!-- End Hero-->
 
 
-            <!-- ======= How it works =======-->
-            <section class="section howitworks__v1" id="how-it-works">
-                <div class="container">
-                    <div class="row mb-5">
-                        <div class="col-md-6 text-center mx-auto"><span class="subtitle text-uppercase mb-3"
-                                data-aos="fade-up" data-aos-delay="0">How it works</span>
-                            <h2 data-aos="fade-up" data-aos-delay="100">How It Works</h2>
-                            <p data-aos="fade-up" data-aos-delay="200">Our platform is designed to make managing your
-                                finances simple and efficient. Follow these easy steps to get started: </p>
-                        </div>
+        <!-- ======= How it works =======-->
+        <section class="section howitworks__v1" id="how-it-works">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-md-6 text-center mx-auto"><span class="subtitle text-uppercase mb-3" data-aos="fade-up"
+                            data-aos-delay="0">How it works</span>
+                        <h2 data-aos="fade-up" data-aos-delay="100">How It Works</h2>
+                        <p data-aos="fade-up" data-aos-delay="200">Our platform is designed to make managing your
+                            finances simple and efficient. Follow these easy steps to get started: </p>
                     </div>
-                    <div class="row g-md-5">
-                        <div class="col-md-6 col-lg-3">
-                            <div class="step-card text-center h-100 d-flex flex-column justify-content-start position-relative"
-                                data-aos="fade-up" data-aos-delay="0">
-                                <div data-aos="fade-right" data-aos-delay="500"><img class="arch-line"
-                                        src="{{asset('assets/images/arch-line.svg') }}" alt="FreeBootstrap.net image placeholder">
-                                </div><span class="step-number rounded-circle text-center fw-bold mb-5 mx-auto">1</span>
-                                <div>
-                                    <h3 class="fs-5 mb-4">Sign Up</h3>
-                                    <p>Visit our website or download our app to sign up. Provide basic information to
-                                        set up your secure account.</p>
-                                </div>
+                </div>
+                <div class="row g-md-5">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="step-card text-center h-100 d-flex flex-column justify-content-start position-relative"
+                            data-aos="fade-up" data-aos-delay="0">
+                            <div data-aos="fade-right" data-aos-delay="500"><img class="arch-line"
+                                    src="{{ asset('assets/images/arch-line.svg') }}"
+                                    alt="FreeBootstrap.net image placeholder">
+                            </div><span class="step-number rounded-circle text-center fw-bold mb-5 mx-auto">1</span>
+                            <div>
+                                <h3 class="fs-5 mb-4">Sign Up</h3>
+                                <p>Visit our website or download our app to sign up. Provide basic information to
+                                    set up your secure account.</p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="600">
-                            <div
-                                class="step-card reverse text-center h-100 d-flex flex-column justify-content-start position-relative">
-                                <div data-aos="fade-right" data-aos-delay="1100"><img class="arch-line reverse"
-                                        src="{{asset('assets/images/arch-line-reverse.svg') }}"
-                                        alt="FreeBootstrap.net image placeholder"></div><span
-                                    class="step-number rounded-circle text-center fw-bold mb-5 mx-auto">2</span>
-                                <h3 class="fs-5 mb-4">Set Up Your Profile</h3>
-                                <p>Add your personal or business details to tailor the platform to your specific needs.
+                    </div>
+                    <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="600">
+                        <div
+                            class="step-card reverse text-center h-100 d-flex flex-column justify-content-start position-relative">
+                            <div data-aos="fade-right" data-aos-delay="1100"><img class="arch-line reverse"
+                                    src="{{ asset('assets/images/arch-line-reverse.svg') }}"
+                                    alt="FreeBootstrap.net image placeholder"></div><span
+                                class="step-number rounded-circle text-center fw-bold mb-5 mx-auto">2</span>
+                            <h3 class="fs-5 mb-4">Set Up Your Profile</h3>
+                            <p>Add your personal or business details to tailor the platform to your specific needs.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="1200">
+                        <div
+                            class="step-card text-center h-100 d-flex flex-column justify-content-start position-relative">
+                            <div data-aos="fade-right" data-aos-delay="1700"><img class="arch-line"
+                                    src="{{ asset('assets/images/arch-line.svg') }}"
+                                    alt="FreeBootstrap.net image placeholder">
+                            </div><span class="step-number rounded-circle text-center fw-bold mb-5 mx-auto">3</span>
+                            <h3 class="fs-5 mb-4">Explore Features</h3>
+                            <p>Access your dashboard for a summary of your finances: balances, recent transactions,
+                                and insights.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="1800">
+                        <div
+                            class="step-card last text-center h-100 d-flex flex-column justify-content-start position-relative">
+                            <span class="step-number rounded-circle text-center fw-bold mb-5 mx-auto">4</span>
+                            <div>
+                                <h3 class="fs-5 mb-4">Invest and Grow</h3>
+                                <p>Discover a variety of investment opportunities tailored to your financial goals.
                                 </p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="1200">
-                            <div
-                                class="step-card text-center h-100 d-flex flex-column justify-content-start position-relative">
-                                <div data-aos="fade-right" data-aos-delay="1700"><img class="arch-line"
-                                        src="{{asset('assets/images/arch-line.svg') }}" alt="FreeBootstrap.net image placeholder">
-                                </div><span class="step-number rounded-circle text-center fw-bold mb-5 mx-auto">3</span>
-                                <h3 class="fs-5 mb-4">Explore Features</h3>
-                                <p>Access your dashboard for a summary of your finances: balances, recent transactions,
-                                    and insights.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="1800">
-                            <div
-                                class="step-card last text-center h-100 d-flex flex-column justify-content-start position-relative">
-                                <span class="step-number rounded-circle text-center fw-bold mb-5 mx-auto">4</span>
-                                <div>
-                                    <h3 class="fs-5 mb-4">Invest and Grow</h3>
-                                    <p>Discover a variety of investment opportunities tailored to your financial goals.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
-            </section>
-            @endsection
-            
-            <!-- End How it works-->
+            </div>
+        </section>
+    @endsection
 
-            
-            <!-- End Stats-->
+    <!-- End How it works-->
 
-            {{-- <!-- ======= Services =======-->
+
+    <!-- End Stats-->
+
+    {{-- <!-- ======= Services =======-->
             <section class="section services__v3" id="services">
                 <div class="container">
                     <div class="row mb-5">
@@ -424,4 +428,3 @@
                 </div>
             </section>
             <!-- Testimonials--> --}}
-

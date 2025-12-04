@@ -3,7 +3,7 @@
 @section('content')
 
     <section class="section howitworks__v1" id="upload">
-        <div class="container">
+        <div class="container mt-custom">
             <div class="row mb-4">
                 <div class="col-md-6 mb-1 text-center mx-auto">
                     <span class="subtitle text-uppercase mb-2" data-aos="fade-up" data-aos-delay="0">Upload</span>
@@ -40,8 +40,7 @@
         </div>
     </section>
 
-
-    <section class="section pricing__v2" id="search">
+    {{-- <section class="section pricing__v2" id="search">
         <div class="container">
 
             <div class="row mb-5">
@@ -114,6 +113,6 @@
             @endif
 
         </div>
-    </section>
+    </section> --}}
 
 @endsection

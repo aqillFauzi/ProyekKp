@@ -277,6 +277,10 @@ h6 {
           transform: translate(-50%, -50%) rotate(-45deg);
 }
 
+.mt-custom {
+  margin-top: 60px !important;
+}
+
 .fbs__net-navbar {
   position: absolute;
   top: 0;
@@ -797,6 +801,8 @@ h6 {
 }
 .hero__v6 .hero-img .img-main {
   position: relative;
+  height: 390px;
+  width: 120%;
   z-index: 9;
 }
 .hero__v6 .hero-img .img-card {
