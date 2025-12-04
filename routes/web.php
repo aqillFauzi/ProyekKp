@@ -12,7 +12,11 @@ Route::get('/about', function () { return view('about'); })->name('about');
 // --- Feature Manajemen Data (Excel & Search) ---
 
 // 1. Halaman Admin / Index Data (Melihat semua data & Upload)
-Route::get('/', [ExcelController::class, 'index '])->name('tenagakerja.index');
+// Route::get('/', [ExcelController::class, 'index '])->name('tenagakerja.index');
+
+Route::get('/', function () {
+    return view('home');
+});
 
 // 2. Proses Import Excel (POST)
 Route::post('/import', [ExcelController::class, 'import'])->name('tenagakerja.import');

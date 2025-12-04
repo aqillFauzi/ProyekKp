@@ -9,7 +9,7 @@
                     <div class="col-lg-6 mb-4 mb-lg-0">
                         <div class="row">
                             <div class="col-lg-11"><span class="hero-subtitle text-uppercase" data-aos="fade-up"
-                                    data-aos-delay="0">Innovative Fintech Solutions</span>
+                                    data-aos-delay="0">BPJS Ketenagakerjaan</span>
                                 <h1 class="hero-title mb-3" data-aos="fade-up" data-aos-delay="100">Secure,
                                     Efficient, and User-Friendly Financial Services</h1>
                                 <p class="hero-description mb-4 mb-lg-5" data-aos="fade-up" data-aos-delay="200">
@@ -61,10 +61,11 @@
             <div class="container">
                 <div class="row mb-5">
                     <div class="col-md-6 text-center mx-auto"><span class="subtitle text-uppercase mb-3" data-aos="fade-up"
-                            data-aos-delay="0">How it works</span>
-                        <h2 data-aos="fade-up" data-aos-delay="100">How It Works</h2>
-                        <p data-aos="fade-up" data-aos-delay="200">Our platform is designed to make managing your
-                            finances simple and efficient. Follow these easy steps to get started: </p>
+                            data-aos-delay="0">BPJS Ketenagakerjaan</span>
+                        <h2 data-aos="fade-up" data-aos-delay="100">Bagaimana Sistem Bekerja</h2>
+                        <p data-aos="fade-up" data-aos-delay="200">Sistem dirancang untuk mencari data pekerja dengan mudah
+                            dan cepat dengan menggunakan nomor NPP dari perusahaan. Ikuti langkah-langkah sederhana berikut
+                            untuk memulai: </p>
                     </div>
                 </div>
                 <div class="row g-md-5">
@@ -76,9 +77,8 @@
                                     alt="FreeBootstrap.net image placeholder">
                             </div><span class="step-number rounded-circle text-center fw-bold mb-5 mx-auto">1</span>
                             <div>
-                                <h3 class="fs-5 mb-4">Sign Up</h3>
-                                <p>Visit our website or download our app to sign up. Provide basic information to
-                                    set up your secure account.</p>
+                                <h3 class="fs-5 mb-4">Buka Website</h3>
+                                <p>Akses halaman utama dan mulai menggunakan fitur pencarian NPP.</p>
                             </div>
                         </div>
                     </div>
@@ -89,8 +89,8 @@
                                     src="{{ asset('assets/images/arch-line-reverse.svg') }}"
                                     alt="FreeBootstrap.net image placeholder"></div><span
                                 class="step-number rounded-circle text-center fw-bold mb-5 mx-auto">2</span>
-                            <h3 class="fs-5 mb-4">Set Up Your Profile</h3>
-                            <p>Add your personal or business details to tailor the platform to your specific needs.
+                            <h3 class="fs-5 mb-4">Masukkan NPP</h3>
+                            <p>Pastikan memiliki nomor NPP perusahaan yang akan dicari.
                             </p>
                         </div>
                     </div>
@@ -101,9 +101,8 @@
                                     src="{{ asset('assets/images/arch-line.svg') }}"
                                     alt="FreeBootstrap.net image placeholder">
                             </div><span class="step-number rounded-circle text-center fw-bold mb-5 mx-auto">3</span>
-                            <h3 class="fs-5 mb-4">Explore Features</h3>
-                            <p>Access your dashboard for a summary of your finances: balances, recent transactions,
-                                and insights.</p>
+                            <h3 class="fs-5 mb-4">Cari NPP</h3>
+                            <p>Masukkan NPP pada kolom pencarian dan sistem akan memproses datanya.</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="1800">
@@ -111,8 +110,8 @@
                             class="step-card last text-center h-100 d-flex flex-column justify-content-start position-relative">
                             <span class="step-number rounded-circle text-center fw-bold mb-5 mx-auto">4</span>
                             <div>
-                                <h3 class="fs-5 mb-4">Invest and Grow</h3>
-                                <p>Discover a variety of investment opportunities tailored to your financial goals.
+                                <h3 class="fs-5 mb-4">Tampilkan Hasilnya</h3>
+                                <p>Data lengkap akan ditampilkan seperti jumlah tenaga kerja, status JMO, dan lainnya.
                                 </p>
                             </div>
                         </div>

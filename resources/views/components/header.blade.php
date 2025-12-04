@@ -8,13 +8,13 @@
 
 
             <!-- Start Logo-->
-            <a class="navbar-brand w-auto" href="index.html">
+            <a class="navbar-brand w-auto" href="{{ route('home') }}">
                 <!-- If you use a text logo, uncomment this if it is commented-->
                 <!-- Vertex-->
 
                 <!-- If you plan to use an image logo, uncomment this if it is commented-->
 
-                <!-- logo dark--><img class="logo dark img-fluid" src="{{ asset('assets/images/logo-dark.svg') }}"
+                <!-- logo dark--><img class="logo dark img-fluid" src="{{ asset('assets/images/logo-bpjs.png') }}"
                     alt="FreeBootstrap.net image placeholder">
 
                 {{-- <!-- logo light--><img class="logo light img-fluid" src="{{ asset('assets/images/logo-light.svg') }}"

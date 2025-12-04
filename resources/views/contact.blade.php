@@ -5,7 +5,7 @@
                 <div class="container mt-custom">
                     <div class="row mb-5">
                         <div class="col-md-6 col-lg-7 mx-auto text-center"><span class="subtitle text-uppercase mb-3"
-                                data-aos="fade-up" data-aos-delay="0">Contact</span>
+                                data-aos="fade-up" data-aos-delay="0">BPJS Ketenagakerjaan</span>
                             <h2 class="h2 fw-bold mb-3" data-aos="fade-up" data-aos-delay="0">Contact Us</h2>
                             <p data-aos="fade-up" data-aos-delay="100">Utilize our tools to develop your concepts and
                                 bring your vision to life. Once complete, effortlessly share your creations.</p>

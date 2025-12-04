@@ -1,9 +1,8 @@
 @extends('layout')
 
 @section('content')
-
-    <section class="section howitworks__v1" id="upload">
-        <div class="container mt-custom">
+    {{-- <section class="section howitworks__v1" id="upload">
+        <div class="container">
             <div class="row mb-4">
                 <div class="col-md-6 mb-1 text-center mx-auto">
                     <span class="subtitle text-uppercase mb-2" data-aos="fade-up" data-aos-delay="0">Upload</span>
@@ -38,14 +37,15 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
-    {{-- <section class="section pricing__v2" id="search">
-        <div class="container">
+    <section class="section pricing__v2" id="search">
+        <div class="container mt-custom">
 
             <div class="row mb-5">
                 <div class="col-md-5 mx-auto text-center">
-                    <span class="subtitle text-uppercase mb-3" data-aos="fade-up" data-aos-delay="0">Cari Npp</span>
+                    <span class="subtitle text-uppercase mb-3" data-aos="fade-up" data-aos-delay="0">BPJS
+                        Ketenagakerjaan</span>
                     <h2 class="mb-3" data-aos="fade-up" data-aos-delay="100">Cari Data Pekerja</h2>
                     <p class="mb-2" data-aos="fade-up" data-aos-delay="200">Data yang dicari berasal dari file Excel yang
                         terakhir Anda upload.</p>
@@ -61,14 +61,15 @@
                         @if (session('success'))
                             <div class="alert alert-success">{{ session('success') }}</div>
                         @endif
-                        
+
                         @if (session('error'))
                             <div class="alert alert-danger">{{ session('error') }}</div>
                         @endif
 
-                        <form action="{{ route('tenagakerja.search') }}" method="POST"> 
+                        <form action="{{ route('tenagakerja.search') }}" method="POST">
                             @csrf <div class="mb-3">
-                                <input type="text" name="npp" class="form-control" placeholder="Masukkan NPP..." required>
+                                <input type="text" name="npp" class="form-control" placeholder="Masukkan NPP..."
+                                    required>
                             </div>
                             <button type="submit" class="btn btn-success w-100">Cari</button>
                         </form>
@@ -77,33 +78,32 @@
                 </div>
             </div>
 
-            @if(session('tenagakerja'))
+            @if (session('tenagakerja'))
                 @php $tk = session('tenagakerja'); @endphp
 
                 <div class="row mt-4">
-                    <div class="col-md-10 mx-auto" data-aos="fade-up" data-aos-delay="450">
-                        
-                        <div class="p-5 rounded-4 text-center text-white" 
-                            style="background-color: #144e4a;">
+                    <div class="col-md-8 mx-auto" data-aos="fade-up" data-aos-delay="450">
 
-                            <h3 class="mb-5 fs-2 fw-normal text-white">
-                                Hasil Pencarian untuk: {{ $tk->nama_perusahaan }}
+                        <div class="p-5 rounded-4 text-center text-white" style="background-color: #144e4a;">
+
+                            <h3 class="mb-5 fs-3 fw-normal text-white">
+                                {{ $tk->nama_perusahaan }}
                             </h3>
 
                             <div class="row">
                                 <div class="col-md-4 mb-4 mb-md-0">
-                                    <span class="d-block fw-bold display-4 mb-2">{{ $tk->tk_aktif }}</span>
-                                    <span class="fs-6 opacity-75">Tenaga Kerja Aktif</span>
+                                    <span class="d-block fw-bold display-4 mb-2 fs-1">{{ $tk->tk_aktif }}</span>
+                                    <span class="fs-5 opacity-75">Tenaga Kerja Aktif</span>
                                 </div>
 
                                 <div class="col-md-4 mb-4 mb-md-0">
-                                    <span class="d-block fw-bold display-4 mb-2">{{ $tk->tk_sudah_jmo }}</span>
-                                    <span class="fs-6 opacity-75">Terdaftar JMO</span>
+                                    <span class="d-block fw-bold display-4 mb-2 fs-1">{{ $tk->tk_sudah_jmo }}</span>
+                                    <span class="fs-5 opacity-75">Terdaftar JMO</span>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <span class="d-block fw-bold display-4 mb-2">{{ $tk->tk_belum_jmo }}</span>
-                                    <span class="fs-6 opacity-75">Belum JMO</span>
+                                    <span class="d-block fw-bold display-4 mb-2 fs-1">{{ $tk->tk_belum_jmo }}</span>
+                                    <span class="fs-5 opacity-75">Belum JMO</span>
                                 </div>
                             </div>
 
@@ -113,6 +113,5 @@
             @endif
 
         </div>
-    </section> --}}
-
+    </section>
 @endsection
