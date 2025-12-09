@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('dashboard');
+})->name('dashboard');
 
-Route::get('/index', function () {
-    return view('index');
-});
+Route::get('/upload', function () {
+    return view('upload');
+})->name('upload');
