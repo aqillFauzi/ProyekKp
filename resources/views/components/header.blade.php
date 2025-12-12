@@ -77,7 +77,7 @@
                     <ul class="menu-inner py-1">
                     <!-- upload data  -->
                     <li class="menu-item">
-                        <a href="{{ route('upload') }}" class="menu-link">
+                        <a href="{{ route('upload.index') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-collection"></i>
                             <div data-i18n="basic">Upload Data</div>
                         </a>
