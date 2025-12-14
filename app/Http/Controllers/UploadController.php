@@ -9,14 +9,34 @@ use Maatwebsite\Excel\Facades\Excel;
 class UploadController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        // 1. Ambil semua data dari tabel Tenagakerja
-        // Kamu bisa menggunakan all() atau paginate(10) jika data banyak
-        $data = Tenagakerja::paginate(10);
+        //pagination dengan pilihan jumlah data per halaman
+        // 1. Ambil nilai 'per_page' dari URL, default-nya 10 jika tidak ada
+        $perPage = $request->input('per_page', 10);
 
-        // 2. Kirim variabel $data ke view 'upload'
-        return view('upload', compact('data'));
+        // 2. Gunakan nilai tersebut di paginate()
+        $data = Tenagakerja::paginate($perPage);
+
+        // 3. Tambahkan parameter ke link pagination agar saat ganti halaman, 
+        // pilihan per_page tidak reset kembali ke 10
+        $data->appends(['per_page' => $perPage]);
+
+        //  Menghitung Statistik untuk Cards
+        $total_perusahaan = Tenagakerja::count();           // Menghitung total baris (NPP)
+        $total_tk_aktif   = Tenagakerja::sum('tk_aktif');   // Menjumlahkan kolom tk_aktif
+        $total_sudah_jmo  = Tenagakerja::sum('tk_sudah_jmo');// Menjumlahkan kolom tk_sudah_jmo
+        $total_belum_jmo  = Tenagakerja::sum('tk_belum_jmo');// Menjumlahkan kolom tk_belum_jmo
+
+        // 3. Kirim semua variabel ke view
+        return view('upload', compact(
+            'data', 
+            'total_perusahaan', 
+            'total_tk_aktif', 
+            'total_sudah_jmo', 
+            'total_belum_jmo'
+        ));
+
     }
 
     public function import(Request $request)
