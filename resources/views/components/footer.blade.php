@@ -14,7 +14,7 @@
                             </form>
                         </div>
                     </div> --}}
-                    <div class="row justify-content-between mb-5 g-xl-5">
+                    {{-- <div class="row justify-content-between mb-5 g-xl-5">
                         <div class="col-md-4 mb-5 mb-lg-0">
                             <h3 class="mb-3">About</h3>
                             <p class="mb-4">Utilize our tools to develop your concepts and bring your vision to life.
@@ -57,7 +57,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
+
                     <div class="row credits pt-3">
                         <div class="col-xl-8 text-center text-xl-start mb-3 mb-xl-0">
                             <!--

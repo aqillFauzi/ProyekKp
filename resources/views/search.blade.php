@@ -46,9 +46,10 @@
                 <div class="col-md-5 mx-auto text-center">
                     <span class="subtitle text-uppercase mb-3" data-aos="fade-up" data-aos-delay="0">BPJS
                         Ketenagakerjaan</span>
-                    <h2 class="mb-3" data-aos="fade-up" data-aos-delay="100">Cari Data Pekerja</h2>
-                    <p class="mb-2" data-aos="fade-up" data-aos-delay="200">Data yang dicari berasal dari file Excel yang
-                        terakhir Anda upload.</p>
+                    <h2 class="mb-3" data-aos="fade-up" data-aos-delay="100">Cari Data Pekerja Disini</h2>
+                    <p class="mb-2" data-aos="fade-up" data-aos-delay="200">Silahkan masukkan nomor NPP untuk mulai mencari data 
+                        pekerja yang dibutuhkan pada kolom dibawah.
+                    </p>
                 </div>
             </div>
 
@@ -56,7 +57,7 @@
                 <div class="col-md-8 mb-3 mx-auto" data-aos="fade-up" data-aos-delay="400">
                     <div class="pt-3 px-5 pb-4 rounded-4 price-table h-100 text-center">
 
-                        <h3 class="mb-3">Cari Data Pekerja Berdasarkan Nomor NPP</h3>
+                        {{-- <h3 class="mb-3">Cari Data Pekerja Berdasarkan Nomor NPP</h3> --}}
 
                         @if (session('success'))
                             <div class="alert alert-success">{{ session('success') }}</div>
@@ -68,7 +69,7 @@
 
                         <form action="{{ route('tenagakerja.search') }}" method="POST">
                             @csrf <div class="mb-3">
-                                <input type="text" name="npp" class="form-control" placeholder="Masukkan NPP..."
+                                <input type="text" name="npp" class="form-control" placeholder="Masukkan Nomor NPP..."
                                     required>
                             </div>
                             <button type="submit" class="btn btn-success w-100">Cari</button>

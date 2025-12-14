@@ -10,14 +10,13 @@
                         <div class="row">
                             <div class="col-lg-11"><span class="hero-subtitle text-uppercase" data-aos="fade-up"
                                     data-aos-delay="0">BPJS Ketenagakerjaan</span>
-                                <h1 class="hero-title mb-3" data-aos="fade-up" data-aos-delay="100">Secure,
-                                    Efficient, and User-Friendly Financial Services</h1>
+                                <h1 class="hero-title mb-3" data-aos="fade-up" data-aos-delay="100">Akses Data Tenaga Kerja
+                                    dengan Mudah dan Cepat.</h1>
                                 <p class="hero-description mb-4 mb-lg-5" data-aos="fade-up" data-aos-delay="200">
-                                    Experience the future of finance with our secure, efficient, and user-friendly
-                                    financial services.</p>
+                                    Dapatkan informasi tenaga kerja aktif, peserta JMO, hingga yang belum terdaftar.</p>
                                 <div class="cta d-flex gap-2 mb-4 mb-lg-5" data-aos="fade-up" data-aos-delay="300">
-                                    <a class="btn" href="#">Get Started Now</a><a class="btn btn-white-outline"
-                                        href="#">Learn More
+                                    <a class="btn" href="{{ route('tenagakerja') }}">Cari Sekarang</a><a
+                                        class="btn btn-white-outline" href="#">Learn More
                                         <svg class="lucide lucide-arrow-up-right" xmlns="http://www.w3.org/2000/svg"
                                             width="18" height="18" viewbox="0 0 24 24" fill="none"
                                             stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -27,16 +26,31 @@
                                         </svg></a>
                                 </div>
                                 <div class="logos mb-4" data-aos="fade-up" data-aos-delay="400"><span
-                                        class="logos-title text-uppercase mb-4 d-block">Trusted by major companies
-                                        worldwide</span>
-                                    <div class="logos-images d-flex gap-4 align-items-center"><img
-                                            class="img-fluid js-img-to-inline-svg"
-                                            src="assets/images/logo/actual-size/logo-air-bnb__black.svg" alt="Company 1"
-                                            style="width: 110px;"><img class="img-fluid js-img-to-inline-svg"
-                                            src="{{ asset('assets/images/logo/actual-size/logo-ibm__black.svg') }}"
-                                            alt="Company 2" style="width: 80px;"><img class="img-fluid js-img-to-inline-svg"
-                                            src="{{ asset('assets/images/logo/actual-size/logo-google__black.svg') }}"
-                                            alt="Company 3" style="width: 110px;"></div>
+                                        class="logos-title text-uppercase mb-4 d-block">Kunjungi Sosial Media Kami</span>
+                                    <div class="social-icons d-flex gap-4 align-items-center">
+                                        <a href="https://www.facebook.com/BPJSTKinfo" target="_blank"
+                                            class="text-dark fs-2">
+                                            <iconify-icon icon="logos:facebook" width="34"
+                                                height="34"></iconify-icon>
+                                        </a>
+
+                                        <a href="https://www.instagram.com/bpjs.ketenagakerjaan" target="_blank"
+                                            class="text-dark fs-2">
+                                            <iconify-icon icon="skill-icons:instagram" width="34"
+                                                height="34"></iconify-icon>
+                                        </a>
+
+                                        <a href="https://x.com/BPJSTKinfo" target="_blank" class="text-dark fs-2">
+                                            <iconify-icon icon="streamline-logos:x-twitter-logo-block" width="34"
+                                                height="34"></iconify-icon>
+                                        </a>
+
+                                        <a href="https://www.youtube.com/user/bpjstkinfo" target="_blank"
+                                            class="text-dark fs-2">
+                                            <iconify-icon icon="fontisto:youtube-play" width="44" height="34"
+                                                style="color: #ec2929"></iconify-icon>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -72,7 +72,7 @@
 
                         <li class="nav-item">
                             <a class="nav-link scroll-link {{ Request::routeIs('contact') ? 'active' : '' }}"
-                                href="{{ route('contact') }}">Kontak</a>
+                                href="{{ route('contact') }}">Kontak Kami</a>
                         </li>
 
                     </ul>

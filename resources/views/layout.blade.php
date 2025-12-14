@@ -19,6 +19,8 @@
     <link href="{{asset('assets/vendors/glightbox/glightbox.min.css') }}" rel="stylesheet">
     <link href="{{asset('assets/vendors/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
     <link href="{{asset('assets/vendors/aos/aos.css') }}" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/2.0.0/iconify-icon.min.js"></script>
+
     <!-- End Styles-->
 
     <!-- ======= Theme Style =======-->

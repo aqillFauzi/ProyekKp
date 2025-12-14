@@ -6,9 +6,10 @@
                     <div class="row mb-5">
                         <div class="col-md-6 col-lg-7 mx-auto text-center"><span class="subtitle text-uppercase mb-3"
                                 data-aos="fade-up" data-aos-delay="0">BPJS Ketenagakerjaan</span>
-                            <h2 class="h2 fw-bold mb-3" data-aos="fade-up" data-aos-delay="0">Contact Us</h2>
-                            <p data-aos="fade-up" data-aos-delay="100">Utilize our tools to develop your concepts and
-                                bring your vision to life. Once complete, effortlessly share your creations.</p>
+                            <h2 class="h2 fw-bold mb-3" data-aos="fade-up" data-aos-delay="0">Hubungi Kontak Kami</h2>
+                            <p data-aos="fade-up" data-aos-delay="100">Anda dapat menghubungi kami melalui beberapa kontak yang 
+                                kami sediakan dibawah ini.
+                            </p>
                         </div>
                     </div>
                     <div class="row">
@@ -16,17 +17,16 @@
                             <div class="d-flex gap-5 flex-column">
                                 <div class="d-flex align-items-start gap-3" data-aos="fade-up" data-aos-delay="0">
                                     <div class="icon d-block"><i class="bi bi-telephone"></i></div><span> <span
-                                            class="d-block">Phone</span><strong>+(01 234 567 890)</strong></span>
+                                            class="d-block">Telepon</span><strong>+(6281380070175)</strong></span>
                                 </div>
                                 <div class="d-flex align-items-start gap-3" data-aos="fade-up" data-aos-delay="100">
                                     <div class="icon d-block"><i class="bi bi-send"></i></div><span> <span
-                                            class="d-block">Email</span><strong>info@mydomain.com</strong></span>
+                                            class="d-block">Email</span><strong>care@bpjsketenagakerjaan.go.id</strong></span>
                                 </div>
                                 <div class="d-flex align-items-start gap-3" data-aos="fade-up" data-aos-delay="200">
                                     <div class="icon d-block"><i class="bi bi-geo-alt"></i></div><span> <span
-                                            class="d-block">Address</span>
-                                        <address class="fw-bold">123 Main Street Apt 4B Springfield, <br> IL 62701
-                                            United States</address>
+                                            class="d-block">Alamat</span>
+                                        <address class="fw-bold">Jl. Tengku Zainal Abidin No.26, Sekip, Kec. Lima Puluh, Kota Pekanbaru, Riau 28142</address>
                                     </span>
                                 </div>
                             </div>
