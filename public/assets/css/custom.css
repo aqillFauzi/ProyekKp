@@ -1,0 +1,124 @@
+/* =========================================================
+   FIX SNEAT THEME - FINAL VERSION
+   (Sidebar Hijau, Pagination Fixed, Badge Table Exception)
+   ========================================================= */
+
+/* 1. Override Variabel Bootstrap Utama */
+:root, [data-theme="theme-default"] {
+    --bs-primary: #0d9494 !important;
+    --bs-primary-rgb: 13, 148, 148 !important;
+    --bs-link-color: #0d9494 !important;
+    --bs-link-hover-color: #0a7a7a !important;
+}
+
+/* ---------------------------------------------------------
+   FIX PAGINATION (Masalah Nomor Hilang)
+   --------------------------------------------------------- */
+/* Saat halaman Aktif (Kotak Hijau) */
+.page-item.active .page-link,
+.pagination .page-item.active .page-link {
+    background-color: #0d9494 !important;
+    border-color: #0d9494 !important;
+    color: #ffffff !important; /* SOLUSI: Paksa teks jadi Putih */
+    box-shadow: 0 0.125rem 0.25rem 0 rgba(13, 148, 148, 0.4) !important;
+}
+
+/* Link Halaman Biasa (Angka Hijau) */
+.page-link, .pagination .page-link {
+    color: #0d9494 !important;
+}
+
+/* Saat Hover di Pagination */
+.page-link:hover, .pagination .page-link:hover {
+    background-color: rgba(13, 148, 148, 0.1) !important;
+    color: #0d9494 !important;
+    border-color: rgba(13, 148, 148, 0.1) !important;
+}
+
+/* ---------------------------------------------------------
+   FIX BADGE TABLE (Pengecualian yang dilingkari)
+   --------------------------------------------------------- */
+/* Kita kembalikan Badge 'Primary' di dalam TABEL menjadi 
+   warna UNGU bawaan Sneat agar kontras, 
+   meskipun tema website Hijau.
+*/
+.table .badge.bg-label-primary {
+    background-color: #e7e7ff !important; /* Background Ungu Muda */
+    color: #696cff !important; /* Teks Ungu */
+}
+
+/* OPSIONAL: Kalau mau Badge tetap Hijau tapi lebih terbaca,
+   hapus kode ungu di atas dan pakai yang ini:
+   
+   .table .badge.bg-label-primary {
+       background-color: rgba(13, 148, 148, 0.12) !important;
+       color: #0d9494 !important;
+   }
+*/
+
+
+/* ---------------------------------------------------------
+   FIX SIDEBAR MENU (Tetap aman seperti sebelumnya)
+   --------------------------------------------------------- */
+.bg-menu-theme .menu-inner > .menu-item.active > .menu-link {
+    background-color: #0d9494 !important;
+    color: #ffffff !important;
+    box-shadow: 0px 2px 6px 0px rgba(13, 148, 148, 0.48) !important;
+}
+.bg-menu-theme .menu-inner > .menu-item.active > .menu-link::before {
+    background-color: #0d9494 !important;
+}
+.bg-menu-theme .menu-inner > .menu-item.active > .menu-link:hover {
+    background-color: #0d9494 !important;
+    color: #ffffff !important;
+}
+.bg-menu-theme .menu-inner > .menu-item:not(.active) > .menu-link:hover {
+    background-color: rgba(13, 148, 148, 0.1) !important;
+}
+/* Ikon */
+.bg-menu-theme .menu-inner > .menu-item.active > .menu-link .menu-icon,
+.bg-menu-theme .menu-inner > .menu-item.active > .menu-link:hover .menu-icon {
+    color: #ffffff !important;
+}
+.bg-menu-theme .menu-inner > .menu-item:not(.active) > .menu-link:hover .menu-icon {
+    color: #0d9494 !important;
+}
+
+/* ---------------------------------------------------------
+   LAIN-LAIN (Tombol, Logo, Input)
+   --------------------------------------------------------- */
+.btn-primary {
+    background-color: #0d9494 !important;
+    border-color: #0d9494 !important;
+    box-shadow: 0 0.125rem 0.25rem 0 rgba(13, 148, 148, 0.4) !important;
+}
+.btn-primary:hover {
+    background-color: #0a7a7a !important;
+    border-color: #0a7a7a !important;
+}
+.btn-outline-primary {
+    color: #0d9494 !important;
+    border-color: #0d9494 !important;
+}
+.btn-outline-primary:hover {
+    background-color: #0d9494 !important;
+    color: #fff !important;
+}
+.text-primary { color: #0d9494 !important; }
+
+/* Ini Badge Umum (Di luar tabel, misal di Cards Dashboard) */
+.bg-label-primary {
+    background-color: rgba(13, 148, 148, 0.16) !important;
+    color: #0d9494 !important;
+}
+
+.app-brand-logo svg path, 
+.app-brand-logo svg g, 
+.app-brand-logo svg use {
+    fill: #0d9494 !important;
+    stroke: #0d9494 !important;
+}
+.form-control:focus, .form-select:focus {
+    border-color: #0d9494 !important;
+    box-shadow: 0 0 0 0.25rem rgba(13, 148, 148, 0.25) !important;
+}
