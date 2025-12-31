@@ -4,18 +4,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\DashboardController;
 
-// Route::get('/', function () {
-//     return view('dashboard');
-// })->name('dashboard');
-
-// Route::get('/upload', function () {
-//     return view('upload');
-// })->name('upload');
-
-
-// route untuk dashboard
+// 1. Halaman Dashboard (Halaman Utama)
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-// route untuk upload data
+
+// 2. Halaman Upload & Lihat Data
 Route::get('/upload', [UploadController::class, 'index'])->name('upload.index');
-// route Proses Upload
+
+// 3. Proses Import Excel
 Route::post('/upload/proses', [UploadController::class, 'import'])->name('upload.import');
+
+// Tambahkan baris ini di bawah route import yang sudah ada
+Route::get('/upload/export-belum-jmo', [UploadController::class, 'exportBelumJmo'])->name('upload.export.belumjmo');
