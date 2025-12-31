@@ -8,14 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Tenagakerja extends Model
 {
     use HasFactory;
-    
+
+    protected $table = 'tenagakerjas';
+
     protected $fillable = [
-        'kode_kantor',
+        'kode_tk',
         'npp',
-        'divisi',
         'nama_perusahaan',
-        'tk_aktif',
-        'tk_sudah_jmo',
-        'tk_belum_jmo',
+        'nama_tk',
+        'kode_kantor',
+        'kode_segmen',
+        'handphone',
+        'status_jmo',
     ];
 }

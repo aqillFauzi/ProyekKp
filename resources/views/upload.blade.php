@@ -1,10 +1,9 @@
 @extends('layout')
+
 @section('content')
-    <!-- Content wrapper -->
     <div class="content-wrapper">
-        <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="fw-bold py-3 mb-4">Upload Data Tenaga Kerja</h4>
+            <h4 class="fw-bold py-3 mb-4">Monitoring Data Tenaga Kerja</h4>
 
             <div class="row g-6 mb-6">
                 <div class="col-sm-6 col-xl-3">
@@ -16,7 +15,7 @@
                                     <div class="d-flex align-items-center my-1">
                                         <h4 class="mb-0 me-2">{{ number_format($total_perusahaan) }}</h4>
                                     </div>
-                                    <small class="text-muted mb-0">Total Data NPP</small>
+                                    <small class="text-muted mb-0">NPP Terdaftar</small>
                                 </div>
                                 <div class="avatar">
                                     <span class="avatar-initial rounded bg-label-primary">
@@ -33,11 +32,11 @@
                         <div class="card-body">
                             <div class="d-flex align-items-start justify-content-between">
                                 <div class="content-left">
-                                    <span>Tenaga Kerja Aktif</span>
+                                    <span>Total Peserta</span>
                                     <div class="d-flex align-items-center my-1">
                                         <h4 class="mb-0 me-2">{{ number_format($total_tk_aktif) }}</h4>
                                     </div>
-                                    <small class="text-muted mb-0">Total Seluruh TK</small>
+                                    <small class="text-muted mb-0">Orang (Aktif)</small>
                                 </div>
                                 <div class="avatar">
                                     <span class="avatar-initial rounded bg-label-info">
@@ -58,7 +57,7 @@
                                     <div class="d-flex align-items-center my-1">
                                         <h4 class="mb-0 me-2 text-success">{{ number_format($total_sudah_jmo) }}</h4>
                                     </div>
-                                    <small class="text-success mb-0">Terdaftar</small>
+                                    <small class="text-success mb-0">Terverifikasi</small>
                                 </div>
                                 <div class="avatar">
                                     <span class="avatar-initial rounded bg-label-success">
@@ -79,7 +78,7 @@
                                     <div class="d-flex align-items-center my-1">
                                         <h4 class="mb-0 me-2 text-danger">{{ number_format($total_belum_jmo) }}</h4>
                                     </div>
-                                    <small class="text-danger mb-0">Belum Terdaftar</small>
+                                    <small class="text-danger mb-0">Pending</small>
                                 </div>
                                 <div class="avatar">
                                     <span class="avatar-initial rounded bg-label-danger">
@@ -92,10 +91,9 @@
                 </div>
             </div>
 
-            {{-- alert --}}
             @if(session('success_upload'))
                 <div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
-                    {{ session('success_upload') }}
+                    <i class='bx bx-check-circle me-1'></i> {{ session('success_upload') }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
@@ -110,90 +108,131 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
-            {{-- /alert --}}
 
-            {{-- table data --}}
             <div class="card mt-4">
-                {{-- header table --}}
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <div class="d-flex align-items-center">
-                        <h5 class="mb-0 me-3">DATA TENAGA KERJA</h5>
+                {{-- HEADER TABLE --}}
+                <div class="card-header">
+                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+                        
+                        <h5 class="mb-0">DAFTAR PESERTA</h5>
 
-                        {{-- pagination control menu --}}
-                        <form action="{{ route('upload.index') }}" method="GET">
-                            <div class="d-flex align-items-center">
-                                <span class="me-2 small text-muted">Show:</span>
-                                <select name="per_page" class="form-select form-select-sm" onchange="this.form.submit()">
-                                    <option value="10" {{ request('per_page') == 10 ? 'selected' : '' }}>10</option>
-                                    <option value="20" {{ request('per_page') == 20 ? 'selected' : '' }}>20</option>
-                                    <option value="50" {{ request('per_page') == 50 ? 'selected' : '' }}>50</option>
-                                    <option value="100" {{ request('per_page') == 100 ? 'selected' : '' }}>100</option>
-                                </select>
+                        {{-- FORM FILTER & PENCARIAN GABUNGAN --}}
+                        <form action="{{ route('upload.index') }}" method="GET" class="d-flex flex-column flex-sm-row gap-2 w-100 w-md-auto">
+                            
+                            {{-- 1. Dropdown Jumlah Data (Per Page) --}}
+                            <select name="per_page" class="form-select form-select-sm w-auto" onchange="this.form.submit()">
+                                <option value="10" {{ request('per_page') == 10 ? 'selected' : '' }}>10 Data</option>
+                                <option value="20" {{ request('per_page') == 20 ? 'selected' : '' }}>20 Data</option>
+                                <option value="50" {{ request('per_page') == 50 ? 'selected' : '' }}>50 Data</option>
+                                <option value="100" {{ request('per_page') == 100 ? 'selected' : '' }}>100 Data</option>
+                            </select>
+
+                            {{-- 2. Dropdown Filter Status (BARU) --}}
+                            <select name="filter_status" class="form-select form-select-sm w-auto" onchange="this.form.submit()">
+                                <option value="">- Semua Status -</option>
+                                <option value="Belum JMO" {{ request('filter_status') == 'Belum JMO' ? 'selected' : '' }}>Hanya Belum JMO</option>
+                                <option value="Sudah JMO" {{ request('filter_status') == 'Sudah JMO' ? 'selected' : '' }}>Hanya Sudah JMO</option>
+                            </select>
+
+                            {{-- 3. Input Pencarian --}}
+                            <div class="input-group input-group-sm">
+                                <span class="input-group-text"><i class="bx bx-search"></i></span>
+                                <input type="text" name="search" class="form-control" placeholder="Cari Nama/NPP..." value="{{ request('search') }}">
+                                <button type="submit" class="btn btn-primary">Cari</button>
                             </div>
+
                         </form>
+
+                        
+                        {{-- GRUP TOMBOL (Download & Import) --}}
+                        <div class="d-flex gap-2">
+                            <a href="{{ route('upload.export.belumjmo', ['search' => request('search')]) }}" class="btn btn-success btn-sm">
+                                <i class="bx bx-download me-1"></i> Download Belum JMO
+                            </a>
+
+                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalImport">
+                                <i class="bx bx-upload me-1"></i> Import
+                            </button>
+                        </div>
+                        
                     </div>
-                    {{-- / pagination control menu --}}
-
-                    {{-- tombol import excel --}}
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalImport">
-                        <i class="bx bx-upload me-1"></i> Import Excel
-                    </button>
-                    {{-- / tombol import excel --}}
                 </div>
-                {{-- / header table --}}
+                {{-- / HEADER TABLE --}}
 
-                {{-- isi table --}}
                 <div class="table-responsive text-nowrap">
-                    <table class="table">
-                        <thead>
+                   {{-- ... (lanjutan tabel ke bawah tetap sama) ... --}}
+
+                <div class="table-responsive text-nowrap">
+                    <table class="table table-hover">
+                        <thead class="table-light">
                             <tr>
-                                <th>Kode Kantor</th>
-                                <th>NPP</th>
-                                <th>Divisi</th>
-                                <th>Nama Perusahaan</th>
-                                <th>TK Aktif</th>
-                                <th>TK Sudah JMO</th>
-                                <th>TK Belum JMO</th>
+                                <th>Kode TK</th>        <th>Nama Peserta</th>
+                                <th>NPP</th>            <th>Nama Perusahaan</th>
+                                <th>Segmen</th>
+                                <th>Kontak</th>
+                                <th>Status JMO</th>
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
-                            {{-- query isi table --}}
                             @forelse($data as $item)
                                 <tr>
-                                    <td>{{ $item->kode_kantor }}</td>
-                                    <td><strong>{{ $item->npp }}</strong></td>
-                                    <td>{{ $item->divisi }}</td>
-                                    <td>{{ $item->nama_perusahaan }}</td>
-                                    <td><span class="badge bg-label-primary me-1">{{ $item->tk_aktif }}</span></td>
-                                    <td><span class="badge bg-label-success me-1">{{ $item->tk_sudah_jmo }}</span></td>
-                                    <td><span class="badge bg-label-danger me-1">{{ $item->tk_belum_jmo }}</span></td>
+                                    <td>
+                                        <span class="badge bg-label-primary">{{ $item->kode_tk }}</span>
+                                    </td>
+
+                                    <td class="fw-bold">
+                                        {{ $item->nama_tk }}
+                                    </td>
+                                    
+                                    <td>
+                                        {{ $item->npp }}
+                                    </td>
+
+                                    <td>
+                                        {{ Str::limit($item->nama_perusahaan, 30) }}
+                                    </td>
+
+                                    <td>
+                                        {{ $item->kode_segmen ?? '-' }}
+                                    </td>
+
+                                    <td>
+                                        {{ $item->handphone ?? '-' }}
+                                    </td>
+
+                                    <td>
+                                        @if($item->status_jmo == 'Sudah JMO')
+                                            <span class="badge bg-label-success">
+                                                <i class='bx bx-check-circle me-1'></i>Sudah
+                                            </span>
+                                        @else
+                                            <span class="badge bg-label-danger">
+                                                <i class='bx bx-x-circle me-1'></i>Belum
+                                            </span>
+                                        @endif
+                                    </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="7" class="text-center">Belum ada data.</td>
+                                    <td colspan="7" class="text-center py-5">
+                                        <div class="text-muted">Belum ada data. Silakan upload file Excel.</div>
+                                    </td>
                                 </tr>
                             @endforelse
-                            {{-- / query isi table --}}
                         </tbody>
                     </table>
                 </div>
-                {{-- / isi table --}}
-
-                {{-- pagination info --}}
 
                 <div class="d-flex justify-content-between align-items-center m-3">
                     <small class="text-muted">
-                        Showing {{ $data->firstItem() }} to {{ $data->lastItem() }} of {{ $data->total() }} entries
+                        Menampilkan {{ $data->firstItem() }} s/d {{ $data->lastItem() }} dari {{ $data->total() }} data
                     </small>
-                    {{ $data->links() }}
+                    {{ $data->links('pagination::bootstrap-4') }}
                 </div>
-                {{-- / pagination info --}}
-
             </div>
+            
             <hr class="my-5" />
-            {{-- / table data --}}
 
-            {{-- modal import excel --}}
             <div class="modal fade" id="modalImport" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
@@ -209,19 +248,18 @@
                                     <div class="col mb-3">
                                         <label for="fileExcel" class="form-label">Pilih File Excel (.xlsx / .csv)</label>
                                         <input class="form-control" type="file" id="fileExcel" name="file" required>
-                                        <small class="text-muted">Pastikan format kolom sesuai template.</small>
+                                        <small class="text-muted">Pastikan format kolom sesuai data BPJS.</small>
                                     </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-outline-secondary"
-                                    data-bs-dismiss="modal">Batal</button>
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
                                 <button type="submit" class="btn btn-primary">Upload</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-            {{-- / modal import excel --}}
+            </div>
+    </div>
 @endsection
-        <!-- / Content -->
