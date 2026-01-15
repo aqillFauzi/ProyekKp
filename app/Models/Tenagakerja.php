@@ -17,7 +17,7 @@ class Tenagakerja extends Model
         'nama_perusahaan',
         'nama_tk',
         'kode_kantor',
-        'kode_segmen',
+        'nama_pembina',
         'handphone',
         'status_jmo',
     ];

@@ -10,7 +10,7 @@
                                 </script>
                                 , made with ❤️ by
                                 <a href="https://themeselection.com" target="_blank"
-                                    class="footer-link fw-bolder">Team SKYZ</a>
+                                    class="footer-link fw-bolder">seki GANTENG Team</a>
                             </div>
                             {{-- <div>
                                 <a href="https://themeselection.com/license/" class="footer-link me-4"
