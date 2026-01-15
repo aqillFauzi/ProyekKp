@@ -4,15 +4,18 @@
 <div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="row">
-            
+
             <div class="col-lg-8 mb-4 order-0">
+                
                 <div class="card mb-4">
                     <div class="d-flex align-items-end row">
                         <div class="col-sm-7">
                             <div class="card-body">
-                                <h5 class="card-title text-primary">Selamat Datang Admin! 🎉</h5>
+                                <h5 class="card-title text-primary">
+                                    Selamat Datang, <span class="fw-bold">{{ auth()->user()->name }}</span>! 🎉
+                                </h5>
                                 <p class="mb-4">
-                                    Saat ini terdapat <span class="fw-bold">{{ number_format($total_tk_aktif) }}</span> tenaga kerja yang terdata di sistem BPJS Ketenagakerjaan.
+                                    Saat ini terdapat <span class="fw-bold">{{ number_format($total_tk_aktif) }}</span> tenaga kerja aktif.
                                 </p>
                                 <a href="{{ route('upload.index') }}" class="btn btn-sm btn-outline-primary">Kelola Data Excel</a>
                             </div>
@@ -26,143 +29,201 @@
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="row row-bordered g-0">
-                        <div class="col-md-8">
-                            <h5 class="card-header m-0 me-2 pb-3">Statistik Monitoring JMO</h5>
-                            <div id="totalRevenueChart" class="px-2"></div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card-body">
-                                <div class="text-center">
-                                     <div class="dropdown">
-                                        <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button"
-                                            id="growthReportId" data-bs-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false">
-                                            {{ date('Y') }}
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="growthReportId">
-                                            <a class="dropdown-item" href="javascript:void(0);">{{ date('Y') - 1 }}</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="growthChart"></div>
-                            <div class="text-center fw-semibold pt-3 mb-2">Status Registrasi</div>
-
-                            <div class="d-flex px-xxl-4 px-lg-2 p-4 gap-xxl-3 gap-lg-1 gap-3 justify-content-between">
-                                <div class="d-flex">
-                                    <div class="me-2">
-                                        <span class="badge bg-label-success p-2"><i class="bx bx-check-circle text-success"></i></span>
-                                    </div>
-                                    <div class="d-flex flex-column">
-                                        <small>Sudah JMO</small>
-                                        <h6 class="mb-0">{{ number_format($total_sudah_jmo) }}</h6>
-                                    </div>
-                                </div>
-                                <div class="d-flex">
-                                    <div class="me-2">
-                                        <span class="badge bg-label-danger p-2"><i class="bx bx-x-circle text-danger"></i></span>
-                                    </div>
-                                    <div class="d-flex flex-column">
-                                        <small>Belum JMO</small>
-                                        <h6 class="mb-0">{{ number_format($total_belum_jmo) }}</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Perbandingan Data JMO</h5>
+                        <small class="text-muted">Updated {{ date('Y-m-d') }}</small>
+                    </div>
+                    <div class="card-body">
+                        <div id="mainBarChart"></div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-lg-4 col-md-4 order-1">
                 <div class="row">
-                    
-                    <div class="col-lg-6 col-md-12 col-6 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="card-title d-flex align-items-start justify-content-between">
-                                    <div class="avatar flex-shrink-0">
-                                        <span class="avatar-initial rounded bg-label-primary">
-                                            <i class="bx bx-buildings"></i>
-                                        </span>
-                                    </div>
-                                    <div class="dropdown">
-                                        <button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
-                                            <a class="dropdown-item" href="javascript:void(0);">Lihat Detail</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <span class="fw-semibold d-block mb-1">Total NPP</span>
-                                <h3 class="card-title mb-2">{{ number_format($total_perusahaan) }}</h3>
-                                <small class="text-primary fw-semibold"><i class="bx bx-check"></i> Perusahaan</small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 col-md-12 col-6 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="card-title d-flex align-items-start justify-content-between">
-                                    <div class="avatar flex-shrink-0">
-                                        <span class="avatar-initial rounded bg-label-info">
-                                            <i class="bx bx-group"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                                <span class="fw-semibold d-block mb-1">Total Tenaga Kerja</span>
-                                <h3 class="card-title text-nowrap mb-1">{{ number_format($total_tk_aktif) }}</h3>
-                                <small class="text-info fw-semibold">Peserta</small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 mb-4">
+                    <div class="col-md-6 mb-4">
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
                                     <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
                                         <div class="card-title">
-                                            <h5 class="text-nowrap mb-2">Sudah JMO</h5>
-                                            <span class="badge bg-label-success rounded-pill">Terregistrasi</span>
+                                            <h5 class="text-nowrap mb-2">Total Perusahaan</h5>
+                                            <span class="badge bg-label-primary rounded-pill">NPP Aktif</span>
                                         </div>
                                         <div class="mt-sm-auto">
-                                            <h3 class="mb-0 text-success">{{ number_format($total_sudah_jmo) }}</h3>
+                                            <h3 class="mb-0">{{ number_format($total_perusahaan) }}</h3>
                                         </div>
                                     </div>
-                                    <div id="profileReportChart"></div> 
+                                    <div id="profileReportChart"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-12 mb-4">
+                    <div class="col-md-6 mb-4">
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
                                     <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
                                         <div class="card-title">
-                                            <h5 class="text-nowrap mb-2">Belum JMO</h5>
-                                            <span class="badge bg-label-danger rounded-pill">Pending</span>
+                                            <h5 class="text-nowrap mb-2">Total Tenaga Kerja</h5>
+                                            <span class="badge bg-label-info rounded-pill">Peserta Aktif</span>
                                         </div>
                                         <div class="mt-sm-auto">
-                                            <h3 class="mb-0 text-danger">{{ number_format($total_belum_jmo) }}</h3>
+                                            <h3 class="mb-0">{{ number_format($total_tk_aktif) }}</h3>
                                         </div>
-                                    </div>
-                                    <div class="avatar flex-shrink-0" style="width: 50px; height: 50px;">
-                                        <span class="avatar-initial rounded bg-label-warning">
-                                            <i class="bx bx-x-circle fs-2"></i>
-                                        </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
+            
+            <div class="col-lg-4 col-md-4 order-1">
+                
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="text-center fw-semibold mb-2">Pencapaian Registrasi</div>
+                        <div id="radialChart"></div>
+                        <p class="text-center text-muted mt-2">Persentase tenaga kerja yang sudah memiliki akun JMO.</p>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-3">
+                            <span class="d-block">Sudah JMO</span>
+                            <span class="badge bg-label-success">Terregistrasi</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h3 class="mb-0 text-success">{{ number_format($total_sudah_jmo) }}</h3>
+                            <div id="sparklineSudah"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-3">
+                            <span class="d-block">Belum JMO</span>
+                            <span class="badge bg-label-danger">Pending</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h3 class="mb-0 text-danger">{{ number_format($total_belum_jmo) }}</h3>
+                            <div class="avatar">
+                                <span class="avatar-initial rounded bg-label-warning">
+                                    <i class="bx bx-x-circle fs-4"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+        </div>
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    
+    // --- DATA DARI CONTROLLER ---
+    const totalSudah = {{ $total_sudah_jmo ?? 0 }};
+    const totalBelum = {{ $total_belum_jmo ?? 0 }};
+    const totalSemua = {{ $total_tk_aktif ?? 0 }};
+    const persentaseSukses = totalSemua > 0 ? Math.round((totalSudah / totalSemua) * 100) : 0;
+
+    // --------------------------------------------------------------------
+    // 1. GRAFIK BATANG BESAR (Comparison Bar)
+    // --------------------------------------------------------------------
+    const barEl = document.querySelector('#mainBarChart');
+    if (barEl) {
+      const barOpt = {
+        series: [totalSudah, totalBelum], // Data langsung array
+        chart: {
+          type: 'donut', // Ganti jadi Donut
+          height: 350,
+        },
+        labels: ['Sudah JMO', 'Belum JMO'],
+        colors: ['#71dd37', '#ff3e1d'],
+        plotOptions: {
+          pie: {
+            startAngle: -90, // Membuat bentuk setengah lingkaran
+            endAngle: 90,
+            offsetY: 10,
+            donut: {
+              size: '70%', // Ketebalan donut
+              labels: {
+                show: true,
+                name: { show: true, offsetY: -20 },
+                value: { 
+                    show: true, 
+                    fontSize: '24px', 
+                    fontWeight: 'bold', 
+                    offsetY: -10,
+                    formatter: function (val) { return val.toLocaleString(); }
+                },
+                total: {
+                  show: true,
+                  label: 'Total TK',
+                  fontSize: '16px',
+                  color: '#566a7f',
+                  formatter: function (w) {
+                    return w.globals.seriesTotals.reduce((a, b) => a + b, 0).toLocaleString();
+                  }
+                }
+              }
+            }
+          }
+        },
+        dataLabels: { enabled: false }, // Label kecil dimatikan biar bersih
+        legend: { position: 'bottom' },
+        grid: { padding: { bottom: -80 } } // Hapus ruang kosong di bawah
+      };
+      new ApexCharts(barEl, barOpt).render();
+    }
+
+    // --------------------------------------------------------------------
+    // 2. GRAFIK PERSENTASE (Radial Chart)
+    // --------------------------------------------------------------------
+    const radialEl = document.querySelector('#radialChart');
+    if (radialEl) {
+      const radialOpt = {
+        series: [persentaseSukses],
+        chart: { height: 250, type: 'radialBar' },
+        plotOptions: {
+          radialBar: {
+            hollow: { size: '60%' },
+            dataLabels: {
+              name: { show: false },
+              value: { offsetY: 10, fontSize: '24px', fontWeight: 'bold', color: '#566a7f', formatter: val => val + '%' }
+            },
+            track: { background: '#f2f2f5' }
+          }
+        },
+        stroke: { lineCap: 'round' },
+        colors: [persentaseSukses > 50 ? '#696cff' : '#ffab00'] // Biru jika >50, Kuning jika kurang
+      };
+      new ApexCharts(radialEl, radialOpt).render();
+    }
+
+    // --------------------------------------------------------------------
+    // 3. GRAFIK GELOMBANG KECIL (Sparkline - Seperti di Gambar Anda)
+    // --------------------------------------------------------------------
+    const sparkEl = document.querySelector('#sparklineSudah');
+    if (sparkEl) {
+      const sparkOpt = {
+        series: [{ data: [10, 25, 15, 30, 20, 45, 35, 50] }], // Data dummy untuk efek gelombang visual
+        chart: { type: 'area', height: 50, width: 100, sparkline: { enabled: true } },
+        stroke: { curve: 'smooth', width: 2 },
+        fill: { opacity: 0.3 },
+        colors: ['#ffab00'], // Warna Kuning/Oranye seperti gambar
+        tooltip: { fixed: { enabled: false }, x: { show: false }, y: { title: { formatter: () => '' } }, marker: { show: false } }
+      };
+      new ApexCharts(sparkEl, sparkOpt).render();
+    }
+
+  });
+</script>
+@endpush
